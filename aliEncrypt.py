@@ -5,7 +5,6 @@
 import sys
 import json
 from base64 import b64encode, b64decode
-from datetime import datetime
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import pad
 from credentials import ACCESS_KEY_ID, ACCESS_KEY_SECRET, REGION, CMK_ID 
@@ -32,7 +31,8 @@ def envelope_encrypt(cmk_id, plainText):
     context = '{"author":"lewis carrol", "year":"1865", "publisher":"project gutenberg"}'   
     request.set_EncryptionContext(context)
 
-    # Call the Alibaba Cloud GenerateDataKey API   
+    # Call the Alibaba Cloud GenerateDataKey API  
+    # Response stored in mutable object which can later be zero'd
     response = [CLIENT.do_action_with_exception(request)]
 
     # Parse the Alibaba Cloud API's JSON response and get the plaintext version of the Data Key
@@ -47,15 +47,9 @@ def envelope_encrypt(cmk_id, plainText):
     encrypted_data_key = json.loads(response[0])['CiphertextBlob']
 
     # Clear the response variable
-    response = clear(response)
+    response[0] = 0
 
     return [cipherText, encrypted_data_key, context]
-
-# Temporary plaintext data keys stored as variable in mutable data structure ojects such as a list
-# The list can then be overwritten with zeros to clear the variable
-def clear(list_toclear):
-    for i in range(0, len(list_toclear)): list_toclear[i] = 0
-    return list_toclear
 
 # Main
 def main():
