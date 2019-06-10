@@ -64,7 +64,6 @@ def main():
     with open(plaintext_filepath, 'r') as fin:
         plainText = fin.read()
         encrypted_obj = envelope_encrypt(CMK_ID, plainText)
-        print encrypted_obj
         
         # Write the ciphertext and encrypted Data Key to output file
         with open(ciphertext_filepath, 'w') as fout:

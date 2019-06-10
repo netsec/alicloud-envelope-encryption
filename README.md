@@ -112,7 +112,7 @@ KMS uses Alibaba Cloud's Resource Access Management (RAM) to control access to a
 
 For this application I created a new RAM User with its own AccessKey for API access. Varying authorisation **policies** can be assigned to RAM Users (and Groups), with policies representing a **set of permissions** being granted to the user.   
 
-I created a **Custom Policy**, as shown below, restricting access to specific KMS functions and use of a specific CMK. Access to a specific resource can be configured using its Alibaba Resource Number (ARN) identifier.
+I created a **Custom Policy**, as shown below, restricting access to specific KMS functions and use of a specific CMK. Access to a specific resource can also be configured using Alibaba Resource Number (ARN) identifiers.
 
 ```
 {

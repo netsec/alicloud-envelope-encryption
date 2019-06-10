@@ -35,8 +35,8 @@ def envelope_decrypt(cipherText, encrypted_data_key, context):
         # Call the Alibaba Cloud Encrypt API and parse the JSON response for the plaintext Data Key. 
         # Response also requires base64 decoding
         # Plaintext data key stored in mutable object which can later be zero'd
-        response = CLIENT.do_action_with_exception(request)
-        data_key = b64decode(json.loads(response)['Plaintext'])
+        response = [CLIENT.do_action_with_exception(request)]
+        data_key = b64decode(json.loads(response[0])['Plaintext'])
 
         # Base64 decode the ciphertext
         cipherText = b64decode(cipherText)
@@ -47,8 +47,9 @@ def envelope_decrypt(cipherText, encrypted_data_key, context):
         cipher = AES.new(data_key[0], AES.MODE_CBC, iv)
         plainText = unpad(cipher.decrypt(cipherText[AES.block_size:]), AES.block_size)
 
-        # Clear the data_key variable
+        # Clear the Data Key variables
         data_key[0] = 0
+        response[0] = 0
 
         return plainText  
     
