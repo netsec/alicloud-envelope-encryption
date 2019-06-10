@@ -10,7 +10,7 @@ Alibaba Cloud provides a professional, free and fully managed KMS that integrate
   <img src="/docs/kms.png"/>
 </p>
 
-A top-level overview of Alibaba Cloud's KMS is available [here (In English)](https://www.alibabacloud.com/product/key-management-service]. Documentation for KMS API available [here (in English)](https://www.alibabacloud.com/help/product/28933.htm)
+A top-level overview of Alibaba Cloud's KMS is available [here (In English)](https://www.alibabacloud.com/product/key-management-service). Documentation for KMS API available [here (in English)](https://www.alibabacloud.com/help/product/28933.htm)
 
 As with other cloud providers, KMS revolves around a Customer Master Key (CMK). CMKs are created and managed by KMS and never exported from KMS. A CMK can be generated from the Cloud Management Console or by calling the relevant API. There are two options for generating CMKs in Alibaba Cloud:
 
