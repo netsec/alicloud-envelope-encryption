@@ -32,7 +32,7 @@ def envelope_decrypt(cipherText, encrypted_data_key, context):
         # Set the ciphertext to decrypt
         request.set_CiphertextBlob(encrypted_data_key)
 
-        # Call the Alibaba Cloud Encrypt API and parse the JSON response for the plaintext Data Key. 
+        # Call the Alibaba Cloud Decrypt API and parses the JSON response for the plaintext Data Key. 
         # Response also requires base64 decoding
         # Plaintext data key stored in mutable object which can later be zero'd
         response = [CLIENT.do_action_with_exception(request)]
